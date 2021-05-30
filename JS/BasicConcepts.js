@@ -45,7 +45,7 @@ Remember the division (/) and multiplication (*) operators.
     console.log(oldPrice - (oldPrice * 20 / 100));
 }
 
-function ChangeYourPassword(){
+function ChangeYourPassword() {
     /*
     Comparison Operators
 
@@ -70,6 +70,48 @@ function ChangeYourPassword(){
     console.log(oldPass == newPass);
 }
 
-function FindTheAdults(){
-    
+function FindTheAdults() {
+    /**
+     * Math Operators
+     * There are a lot of situations where you want to check someone’s age...not just at the bar!
+     * Write a program that takes the age of the user as input, checks if the user is an adult, and outputs to the console the corresponding boolean value.
+     * 
+     * Sample Input
+     * 20
+     * 
+     * Sample Output
+     * true
+     * 
+     * If the user is 18 or older, they’re considered an adult.
+     */
+    var age = parseInt(readLine(), 10);
+    // Your code here
+    if (age >= 18) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+}
+
+function NoonOrMidnight() {
+    /**Noon Or Midnight
+     * Given a clock that measures 24 hours in a day, write a program that takes the hour as input and ...
+     * Time flies when you’re having fun.
+     * Given a clock that measures 24 hours in a day, write a program that takes the hour as input. If the hour is in the range of 0 to 12, output am to the console, and output pm if it's not.
+     * 
+     * Sample Input
+     * 13
+     * 
+     * Sample Output
+     * pm
+     * 
+     * Assume the input number is positive and less than or equal to 24.
+     */
+    var hour = parseInt(readLine(), 10);
+    // Your code goes here
+    if (hour >= 13) {
+        console.log("pm");
+    } else {
+        console.log("am");
+    }
 }
