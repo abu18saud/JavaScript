@@ -44,3 +44,32 @@ Remember the division (/) and multiplication (*) operators.
     // your code goes here
     console.log(oldPrice - (oldPrice * 20 / 100));
 }
+
+function ChangeYourPassword(){
+    /*
+    Comparison Operators
+
+    Write a program that doesn't allow you to type an old password.
+    Reset account passwords should not be the same as the old password.
+    Write a program that takes old and new passwords as inputs and outputs to the console the boolean value (true or false) that shows whether or not they match.
+
+    Sample Input
+    hl8792m
+    hl8792m
+
+    Sample Output
+    true
+
+    Remember that all comparison operators always return true or false.
+    For example: console.log(5>4) outputs true.
+    */
+
+    var oldPass = readLine();
+    var newPass = readLine();
+    // Your code goes here
+    console.log(oldPass == newPass);
+}
+
+function FindTheAdults(){
+    
+}
