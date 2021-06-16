@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <script src="js/Overview.js"></script>
-    <script src="js/BasicConcepts.js"></script>
-    <script src="js/test.js"></script>
+    <title>Document</title>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <!--<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script> -->
+    <!--<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script> -->
 
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script> -->
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script> -->
     <!--Firebase Libraries-->
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
-
 </head>
 
 <body>
@@ -34,10 +30,10 @@
     <button id="insert">INSERT</button>
     <button id="select">SELECT</button>
     <button id="update">UPDATE</button>
-    <button id="delete">DELETE</button> <br>
-    <input type="email" id="email" />
-    <button id="send">Send</button>
-    <script>
+    <button id="delete">DELETE</button>
+
+    <script id=mainScript>
+        //-------------------------- Config ---------------------------------
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         var firebaseConfig = {
@@ -52,11 +48,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        var firebaseRef = firebase.database().ref('emails');
-        document.querySelector('#send').addEventListener('click', () => {
-            const email = document.getElementById('email').value;
-            firebaseRef.push(email);
-        });
+        firebase.analytics();
         //-------------------------- Ready Data ---------------------------------
         var nameV, rollV, secV, genV;
         function ready() {
@@ -66,7 +58,7 @@
             genV = document.getElementById('genbox').value;
         }
         //-------------------------- Insert Process ---------------------------------
-        document.getElementById('insert').onclick = function () {
+/*         document.getElementById('insert').onclick = function () {
             ready();
             firebase.database().ref('student/' + rollV).set({
                 NameOfStudent: nameV,
@@ -74,18 +66,42 @@
                 Section: secV,
                 Gender: genV
             });
+        } */
+        //-------------------------- Selection Process ---------------------------------
+        document.getElementById("select").onclick = function () {
+            ready();
+            firebase.database().ref('student/' + rollV).on('value', function (snapshot) {
+                document.getElementById('namebox').value = snapshot.val().NameOfStudent;
+                document.getElementById('secbox').value = snapshot.val().Section;
+                document.getElementById('genbox').value = snapshot.val().Gender;
+            });
         }
-
-        firebase.analytics();
+        //-------------------------- Update Process ---------------------------------
+        document.getElementById("update").onclick = function () {
+            ready();
+            firebase.database().ref('student/' + rollV).update({
+                NameOfStudent: nameV,
+                Section: secV,
+                Gender: genV
+            });
+        }
+        //-------------------------- Update Process ---------------------------------
+        document.getElementById("delete").onclick = function () {
+            ready();
+            firebase.database().ref('student/' + rollV).remove();
+        }
+        //-------------------------- serial number ---------------------------------
+        //-------------------------- Insert serial ---------------------------------
+        document.getElementById('insert').onclick = function () {
+            ready();
+            firebase.database().ref('counter/cv_form').set({
+                counter: 0,
+            });
+        }
     </script>
 
-    <script>welcome();</script>
-    <script>outputToConsole();</script>
-
-    <button onclick="myFunction3()">test</button>
 
 </body>
-
 
 
 </html>
