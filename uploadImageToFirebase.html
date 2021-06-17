@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save & Load Image from Firebase Storage JS</title>
+</head>
+
+<body>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+        }
+    </style>
+    Image Name <input type="text" id="namebox"> <br><br>
+    <img id="myImg"> <label id=upProgress></label><br><br>
+
+    <button id="select">Select Image</button>
+    <button id="upload">Upload Image</button>
+    <button id="retrieve">Retrieve Image</button>
+
+    <!--Firebase Libraries-->
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
+
+    <script id="mainScript">
+        //-------------------------- VARIABLES -------------------------------------
+        var imgName, imgUrl;
+        var files = [];
+        var reader;
+        //-------------------------- GONFIGURATION -------------------------------------
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyD8kdYFlcJOF-Dbvr3lqlJq0C0z3eRJVOc",
+            authDomain: "sharecv-35289.firebaseapp.com",
+            databaseURL: "https://sharecv-35289.firebaseio.com",
+            projectId: "sharecv-35289",
+            storageBucket: "sharecv-35289.appspot.com",
+            messagingSenderId: "476362844296",
+            appId: "1:476362844296:web:3872db500f6f5f13c8573d",
+            measurementId: "G-T1Y8P8GG1N"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        //-------------------------- SELECTION PROCESS -------------------------------------
+        document.getElementById("select").onclick = function (e) {
+            var input = document.createElement('input');
+            input.type = 'file';
+
+            input.onchange = e => {
+                files = e.target.files;
+                reader = new FileReader();
+                reader.onload = function () {
+                    document.getElementById("myImg").src = reader.result;
+                }
+                reader.readAsDataURL(files[0]);
+            }
+            input.click();
+
+        }
+        //-------------------------- UPLOAD PROCESS -------------------------------------
+
+
+        //-------------------------- upload picture to storage -------------------------------------        
+        document.getElementById('upload').onclick = function () {
+            imgName = document.getElementById('namebox').value;
+            var uploadTask = firebase.storage().ref('Image/' + imgName + ".png").put(files[0]);
+
+            uploadTask.on('state_changed', function (snapshot) {
+                var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+                document.getElementById('upProgress').innerHTML = 'Upload ' + progress + '%';
+            },
+                //-------------------------- error handling -------------------------------------        
+                function (error) {
+                    alert('Error in saving the image');
+                },
+                //-------------------------- submit image link to database -------------------------------------        
+                function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                        imgUrl = url;
+
+
+                        firebase.database().ref('Pictures/' + imgName).set({
+                            Name: imgName,
+                            Link: imgUrl
+                        });
+                        alert('Image added successfully');
+                    });
+                }
+
+
+            );
+        }
+
+
+    </script>
+
+</body>
+
+</html>
