@@ -96,12 +96,16 @@
                         alert('Image added successfully');
                     });
                 }
-
-
             );
         }
+        //-------------------------- retrieval PROCESS -------------------------------------
+        document.getElementById('retrieve').onclick = function () {
+            imgName = document.getElementById('namebox').value;
+            firebase.database().ref('Pictures/' + imgName).on('value', function (snapshot) {
+                document.getElementById('myImg').src = snapshot.val().Link;
+            });
 
-
+        }
     </script>
 
 </body>
