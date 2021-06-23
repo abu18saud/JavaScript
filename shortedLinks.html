@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //367cfa367a73a60adf5a1366ddefdfe5251c7
+        //'https://cutt.ly/api/api.php?key=[API_KEY]&stats=[SHORTENED_URL]'
+
+        function shortLink() {
+            var key = "367cfa367a73a60adf5a1366ddefdfe5251c7";
+            var longLink = "www.google.com";
+            var link = "https://cutt.ly/api/api.php?key=" + key + "&stats=" + chatId;
+            fetch(link).then(response => response.json())
+                .then(data => console.log(data));
+
+        }
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <button onclick="shortLink">تقليص الرابط</button>
+
+</body>
+
+</html>
