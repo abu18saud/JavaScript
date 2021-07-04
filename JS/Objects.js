@@ -139,3 +139,92 @@ function Product(prodID, price) {
         this.price = price - ((discount / 100) * price);
     }
 }
+//You can also define the function outside of the constructor function and associate it with the object.
+function person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.yearOfBirth = bornYear;
+}
+
+function bornYear() {
+    return 2016 - this.age;
+}
+
+/**Annual Interest Rate
+ * Complete the function outside the constructor to calculate the annual interest.
+ * Adding Methods
+ * The program you are given should calculate the annual income of a given loan.
+ * The program takes the loan initial amount and the annual interest percentage as input, then creates the loan object.
+ * Complete the function outside the constructor to calculate the annual income, then assign that value to the corresponding field, that you also create, of the constructor in order to execute the given output.
+ * 
+ * Sample Input
+ * 15000
+ * 20
+ * 
+ * Sample Output
+ * 3000
+ * 
+ * Explanation
+ * The output represent the yearly income of the loan with a 15000 initial amount and 20% annual interest : 20/100*15000 = 3000.
+ * 
+ * You should create a new property in the constructor to store the annual income value returned from the calculating function.
+ */
+
+function annualInterestRate() {
+    //get the initial amount and the interest percentage
+    var amount = parseInt(readLine(), 10);
+    var yearPercent = parseInt(readLine(), 10);
+
+    var loan1 = new Loan(amount, yearPercent);
+
+    //output to console
+    console.log(loan1.yearIncome());
+}
+
+function Loan(amount, percent) {
+    this.amount = amount;
+    this.yearPercent = percent;
+    //your code goes here
+    this.yearIncome = calcYearIncome;
+};
+
+function calcYearIncome() {
+    //complete the function to calculate yearly income
+    return (this.yearPercent / 100) * this.amount;
+}
+//Call the method by the property name you specified in the constructor function, rather than the function name.
+function person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.yearOfBirth = bornYear;
+}
+
+function bornYear() {
+    return 2016 - this.age;
+}
+
+var p = new person("A", 22);
+
+document.write(p.yearOfBirth());
+/**Contact Manager
+ * You are working on a Contact Manager app.
+ * You have created the contact object constructor, which has two arguments, name and number.
+ * You need to add a print() method to the object, which will output the contact data to the console in the following format: name: number
+ * The given code declares two objects and calls their print() methods. Complete the code by defining the print() method for the objects.
+ * 
+ * Notice the space after the colon, when outputting the contact data.
+ */
+function contact(name, number) {
+    this.name = name;
+    this.number = number;
+    this.print = contactPrint;
+}
+
+function contactPrint() {
+    console.log(this.name + ": " + this.number);
+}
+
+var a = new contact("David", 12345);
+var b = new contact("Amy", 987654321);
+a.print();
+b.print();
