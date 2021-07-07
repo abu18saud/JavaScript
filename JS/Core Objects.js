@@ -260,5 +260,5 @@ setInterval(printTime, 1000);
     var names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var d = new Date(year, month, day);
      //complete the function
-     
+     return names[d.getDay()];
  }
