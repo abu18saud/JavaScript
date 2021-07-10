@@ -27,6 +27,15 @@
 </head>
 
 <body>
+    <p>hi</p>
+    <p>hello</p>
+    <p>hi</p>
+    <script>
+        var arr = document.getElementsByTagName("p");
+        for (var x = 0; x < arr.length; x++) {
+            arr[x].innerHTML = "Hi there";
+        }
+    </script>
     Name <input type="text" id="namebox"> <br>
     Roll No <input type="text" id="rollbox"> <br>
     Section <input type="text" id="secbox"> <br>
@@ -81,7 +90,7 @@
     </script>
 
     <script>PagesPerMinute();</script>
-<!--     <script>outputToConsole();</script>
+    <!--     <script>outputToConsole();</script>
 
     <button onclick="myFunction3()">test</button>
 

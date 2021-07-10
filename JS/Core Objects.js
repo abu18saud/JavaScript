@@ -142,7 +142,7 @@ function circumferenceOfaCircle() {
 
 //complete the function
 function calcCirc(r) {
-c = 2 * Math.PI * r;
+    c = 2 * Math.PI * r;
     return c.toFixed(2);
 }
 
@@ -156,38 +156,38 @@ c = 2 * Math.PI * r;
  *  Math.ceil(Math.random() * 10).
  */
 
- var ran = Math.ceil(Math.random() * 100);
+var ran = Math.ceil(Math.random() * 100);
 
- document.write(ran);
+document.write(ran);
 
- /**Which Century?
-  * Create a function that returns the century depending on the given parameter.
-  * The Math Object
-  * Create a function that returns the century depending on the year given as a parameter.
-  * 
-  * Sample Input
-  * 1993
-  * 
-  * Sample Output
-  * 20
-  * 
-  * Hint
-  * You need to divide 1993 by 100: 1993/100 = 19.93, then round it to the nearest integer, which is 20 in this case.
-  * 
-  * Use Math.ceil(x) method, which returns x rounded upwards to the nearest integer.
-  */
+/**Which Century?
+ * Create a function that returns the century depending on the given parameter.
+ * The Math Object
+ * Create a function that returns the century depending on the year given as a parameter.
+ * 
+ * Sample Input
+ * 1993
+ * 
+ * Sample Output
+ * 20
+ * 
+ * Hint
+ * You need to divide 1993 by 100: 1993/100 = 19.93, then round it to the nearest integer, which is 20 in this case.
+ * 
+ * Use Math.ceil(x) method, which returns x rounded upwards to the nearest integer.
+ */
 
-  function whichCentury() {
+function whichCentury() {
     var year = parseInt(readLine(), 10)
-    
+
     //the output
     console.log(calcCent(year));
-    
+
 }
 
 //complete the function
-function calcCent(year){
-    var c = year/100;
+function calcCent(year) {
+    var c = year / 100;
     return Math.ceil(c);
 }
 //Let's create a program that will ask the user to input a number and alert its square root.
@@ -211,13 +211,13 @@ setInterval(myAlert, 3000);
  * new Date(year, month, day, hours, minutes, seconds, milliseconds)
  */
 //Fri Jan 02 1970 00:00:00
-var d1 = new Date(86400000); 
+var d1 = new Date(86400000);
 
 //Fri Jan 02 2015 10:42:00
 var d2 = new Date("January 2, 2015 10:42:00");
 
 //Sat Jun 11 1988 11:42:00
-var d3 = new Date(88,5,11,11,42,0,0);
+var d3 = new Date(88, 5, 11, 11, 42, 0, 0);
 
 document.write(d2);
 
@@ -228,7 +228,7 @@ function printTime() {
     var hours = d.getHours();
     var mins = d.getMinutes();
     var secs = d.getSeconds();
-    document.body.innerHTML = hours+":"+mins+":"+secs;
+    document.body.innerHTML = hours + ":" + mins + ":" + secs;
 }
 setInterval(printTime, 1000);
 /**Monday to Sunday
@@ -248,17 +248,41 @@ setInterval(printTime, 1000);
  * Hint: The given code creates a Date object from the parameters. Use the getDay() method of the date object to get the index, then use it in the given names array to return the name of the day.
  */
 
- function MondayToSunday() {
+function MondayToSunday() {
     var year = parseInt(readLine(), 10);
     var month = parseInt(readLine(), 10);
     var day = parseInt(readLine(), 10);
-     
-    console.log(getWeekDay(year, month, day)); 
- }
- 
- function getWeekDay(year, month, day) {
+
+    console.log(getWeekDay(year, month, day));
+}
+
+function getWeekDay(year, month, day) {
     var names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var d = new Date(year, month, day);
-     //complete the function
-     return names[d.getDay()];
- }
+    //complete the function
+    return names[d.getDay()];
+}
+/** Store Manager
+ * You are working on a Store Manager program, which stores the prices in an array.
+ * You need to add functionality to increase the prices by the given amount.
+ * The increase variable is taken from user input. You need to increase all the prices in the given array by that amount and output to the console the resulting array.
+ * 
+ * Use a loop to iterate through the array and increase all items.
+ */
+
+function main() {
+    var increase = parseInt(readLine(), 10);
+    var prices = [98.99, 15.2, 20, 1026];
+    //your code goes here
+    console.log(Increase(prices, increase));
+
+}
+
+function Increase(Array, increase) {
+    newArray = []
+    for (i = 0; i < Array.length; i++) {
+        newArray[i] = Array[i] + increase;
+    }
+
+    return newArray;
+}
