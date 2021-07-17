@@ -103,7 +103,7 @@ console.log(count);
 
 //Functions in ECMAScript 6
 const add = (x, y) => {
-    let sum = x + y;  
+    let sum = x + y;
     console.log(sum);
 }
 add(35, 7);
@@ -119,7 +119,7 @@ x();
 //The syntax is very useful for inline functions. For example, let's say we have an array, and for each element of the array we need to execute a function. We use the forEach method of the array to call a function for each element:
 var arr = [2, 3, 7, 8];
 
-arr.forEach(function(el) {
+arr.forEach(function (el) {
     console.log(el * 2);
 });
 
@@ -144,21 +144,20 @@ arr.forEach(v => {
  * Use the forEach() function to operate with each element of the array.
  */
 
- function salaryRise() {
-    var percent = parseInt(readLine(),10);
-    
+function salaryRise() {
+    var percent = parseInt(readLine(), 10);
+
     console.log(salaryIncrease(percent));
 }
 var salaries = [3000, 7000, 5000, 15000];
 const salaryIncrease = percent => {
     //your code goes here
     var increase = 0;
-    
-    salaries.forEach(v =>
-    {
-         increase += v*(percent/100);
+
+    salaries.forEach(v => {
+        increase += v * (percent / 100);
     })
-   
+
     return increase;
 }
 
@@ -178,10 +177,10 @@ console.log(test(5));
  */
 
 
- let tree = {
+let tree = {
     height: 10,
     color: 'green',
-    grow() { 
+    grow() {
         this.height += 2;
     }
 };
@@ -201,7 +200,7 @@ let athlete = {
 console.log(athlete.height); // 5
 
 //When creating an object by using duplicate property names, the last property will overwrite the prior ones of the same name.
-var a = {x: 1, x: 2, x: 3, x: 4};
+var a = { x: 1, x: 2, x: 3, x: 4 };
 console.log(a.x); // 4
 
 
@@ -212,8 +211,8 @@ let id = '1234';
 let mobile = '08923';
 
 let user = {
-  [prop]: 'Jack',
-  [`user_${id}`]: `${mobile}`
+    [prop]: 'Jack',
+    [`user_${id}`]: `${mobile}`
 };
 
 console.log(user.name); // Jack
@@ -222,9 +221,9 @@ console.log(user.user_1234); // 08923
 //-----Example 2:
 var i = 0;
 var a = {
-  ['foo' + ++i]: i,
-  ['foo' + ++i]: i,
-  ['foo' + ++i]: i
+    ['foo' + ++i]: i,
+    ['foo' + ++i]: i,
+    ['foo' + ++i]: i
 };
 
 console.log(a.foo1); // 1
@@ -291,7 +290,7 @@ let person = {
     age: 18
 };
 
-let newPerson = Object.assign({}, person, {name: 'Bob'});
+let newPerson = Object.assign({}, person, { name: 'Bob' });
 
 console.log(newPerson.name); // Bob
 
@@ -302,7 +301,7 @@ console.log(newPerson.name); // Bob
  * The given program declares two classes - basic and advanced with corresponding properties. Complete the code to combine basic and advanced level exercises into one new object named total, so that the given code for final output works correctly.
  * Use Object.assign() to perform the requested operation.
  */
- let basic = {
+let basic = {
     ex1: 'PushUps: 20 times',
     ex2: 'Jumps: 20 times'
 };
@@ -312,9 +311,9 @@ let advanced = {
 };
 
 //your code goes here
-total =  Object.assign({}, basic, advanced)
+total = Object.assign({}, basic, advanced)
 
-for(let ex in total) {
+for (let ex in total) {
     console.log(total[ex])
 };
 
@@ -323,13 +322,13 @@ const obj1 = {
     a: 0,
     b: 2,
     c: 4
-  };
-  const obj2 = Object.assign({c: 5, d: 6}, obj1);
-  console.log(obj2.c, obj2.d);
+};
+const obj2 = Object.assign({ c: 5, d: 6 }, obj1);
+console.log(obj2.c, obj2.d);
 
 
-  //Array Destructuring in ES6
-  let arr = ['1', '2', '3'];
+//Array Destructuring in ES6
+let arr = ['1', '2', '3'];
 
 let [one, two, three] = arr;
 
@@ -363,29 +362,29 @@ let [Ann, Fred, John] = names;
 console.log(John);
 
 //هنا نأخذ قيم المصفوفات ونضعها في متغيرات
-let obj = {h:100, s: true};
-let {h, s} = obj;
+let obj = { h: 100, s: true };
+let { h, s } = obj;
 
 console.log(h);
 console.log(s);
 
 //يمكننا التخصيص بدون تصريح ، ولكن هناك بعض المتطلبات النحوية لذلك
 let a, b;
-({a, b} = {a: 'Hello ', b: 'Jack'});
+({ a, b } = { a: 'Hello ', b: 'Jack' });
 
 console.log(a + b);
 //تعد () التي تحتوي على فاصلة منقوطة (؛) في النهاية إلزامية عند التدمير بدون تصريح. ومع ذلك ، يمكنك أيضًا القيام بذلك على النحو التالي حيث لا تكون () مطلوبة
 
-var o = {h: 42, s: true};
-var {h: foo, s: bar} = o;
+var o = { h: 42, s: true };
+var { h: foo, s: bar } = o;
 
 //console.log(h); // Error
 console.log(foo); // 42
 
 //أخيرًا يمكنك تعيين قيم افتراضية للمتغيرات ، في حالة عدم تحديد القيمة التي تم فك حزمها من الكائن.
-var obj = {id: 42, name: "Jack"};
+var obj = { id: 42, name: "Jack" };
 
-let {id = 10, age = 20} = obj;
+let { id = 10, age = 20 } = obj;
 
 console.log(id); // 42
 console.log(age); // 20
@@ -411,7 +410,7 @@ function containsAll(arr) {
         let num = arguments[k];
 
         if (arr.indexOf(num) !== -1) {
-        console.log(arguments[k] + " - (" + num + ")");
+            console.log(arguments[k] + " - (" + num + ")");
         }
     }
 }
@@ -420,7 +419,7 @@ let x = [2, 4, 6, 7];
 console.log(containsAll(x, 2, 4, 7));
 console.log(containsAll(x, 2, 4, 7));
 
-//دالة ليست واضحة
+//دالة للتحقق من تكرار القيم
 function containsAll(arr) {
     for (let k = 1; k < arguments.length; k++) {
         let num = arguments[k];
@@ -437,3 +436,313 @@ console.log(containsAll(x, 6, 4, 9));
 
 //We can pass any number of arguments to the function and access it using the arguments object.
 
+
+
+/** Rest & Spread 
+ * Summary calculator
+ * Create a program to calculate the sum of any number of values.
+ * You are making a program to calculate the sum of any number of values.
+ * Complete the given function so that it takes as parameters as many numbers as needed and returns the sum.
+ * Use the rest parameter as an argument.
+ * 
+ */
+//complete the function
+function Add(...num) {
+    total = 0;
+    for (i = 0; i < arguments.length; i++) {
+        total += arguments[i];
+    }
+    return total;
+}
+
+console.log(Add(1, 2, 3));
+console.log(Add(4, 14, 5, 9, 14));
+console.log(Add(2, 36));
+
+
+//Filter
+function magic(...nums) {
+    let sum = 0;
+    nums.filter(n => n % 2 == 0).map(el => sum += el);
+    return sum;
+}
+console.log(magic(1, 2, 3, 4, 5, 6));
+
+//قبل ES6
+function myFunction(w, x, y, z) {
+    console.log(w + x + y + z);
+}
+var args = [1, 2, 3];
+myFunction.apply(null, args.concat(4));
+
+//يوفر ES6 طريقة سهلة للقيام بالمثال أعلاه مع عوامل الانتشار
+const myFunction = (w, x, y, z) => {
+    console.log(w + x + y + z);
+};
+let args = [1, 2, 3];
+myFunction(...args, 4);
+
+//يمكننا استخدام ES6 للتواريخ
+var dateFields = [1970, 1, 1];  // 1 Jan 1970
+var date = new Date(...dateFields);
+console.log(date);
+
+//قبل ES6 ، استخدمنا الصيغة التالية لإضافة عنصر في منتصف المصفوفة
+var arr = ["One", "Two", "Five"];
+
+arr.splice(2, 0, "Three");
+arr.splice(3, 0, "Four");
+console.log(arr);
+
+//يمكنك استخدام طرق مثل الدفع ، واللصق ، والتسلسل ، على سبيل المثال ، لتحقيق ذلك في مواضع مختلفة من المصفوفة. ومع ذلك ، في ES6 ، يتيح لنا عامل الانتشار القيام بذلك بسهولة أكبر
+let newArr = ['Three', 'Four'];
+let arr = ['One', 'Two', ...newArr, 'Five'];
+console.log(arr);
+
+//في الكائنات ، يقوم بنسخ الخصائص المعدودة الخاصة من الكائن المقدم إلى كائن جديد
+const obj1 = { foo: 'bar', x: 42 };
+const obj2 = { foo: 'baz', y: 5 };
+
+const clonedObj = { ...obj1 }; // { foo: "bar", x: 42 }
+const mergedObj = { ...obj1, ...obj2 }; // { foo: "baz", x: 42, y: 5 }
+
+//ومع ذلك ، إذا حاولت دمجها فلن تحصل على النتيجة التي توقعتها
+const obj1 = { foo: 'bar', x: 42 };
+const obj2 = { foo: 'baz', y: 5 };
+const merge = (...objects) => ({ ...objects });
+
+let mergedObj = merge(obj1, obj2);
+// { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 5 } }
+
+let mergedObj2 = merge({}, obj1, obj2);
+// { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 5 } }
+//يمكن استنساخ الكائنات أو دمجها مع عامل آخر يسمى Object.assign ().
+
+
+//لجلب العنصر الرابع
+let nums = [3, 4, 5];
+let all = [1, 2, ...nums, 6];
+console.log(all[4]);
+
+
+//الكلاسات
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+}
+
+const square = new Rectangle(5, 5);
+const poster = new Rectangle(2, 3);
+
+console.log(square.height);
+
+//في تعبير الفئة غير المسماة ، يتم تعيين تعريف الفئة للمتغير
+var Square = class {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+};
+
+const square = new Square(5, 5);
+const poster = new Square(2, 3);
+
+console.log(square.height);
+
+/** المُنشئ هو طريقة خاصة تُستخدم لإنشاء وتهيئة كائن تم إنشاؤه باستخدام فئة.
+ * يمكن أن يكون هناك مُنشئ واحد فقط في كل فئة.
+ */
+
+class Point {
+    constructor(a, b) {
+        this.x = a;
+        this.y = b;
+    }
+    get X() { return this.x; }
+    get Y() { return this.y; }
+}
+
+const Pnt = new Point(2, 4);
+
+console.log(
+    `Point A(${Pnt.X}, ${Pnt.Y})`
+);
+
+//Class Methods in ES6
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+
+    get area() {
+        return this.calcArea();
+    }
+
+    calcArea() {
+        return this.height * this.width;
+    }
+}
+
+const square = new Rectangle(5, 5);
+console.log(square.area); // 25
+
+//نوع آخر من الطرق هو الطريقة الثابتة ، والتي لا يمكن استدعاؤها من خلال مثيل الفئة. غالبًا ما تُستخدم الطرق الثابتة لإنشاء وظائف الأداة المساعدة لأحد التطبيقات.
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    static distance(a, b) {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+
+        return Math.hypot(dx, dy);
+    }
+}
+
+const p1 = new Point(7, 2);
+const p2 = new Point(3, 8);
+
+console.log(Point.distance(p1, p2));
+//كما ترى ، يتم استدعاء طريقة المسافة الثابتة مباشرة باستخدام اسم الفئة ، بدون كائن.
+
+
+/** Class Methods in ES6
+ * Average exam score
+ * Add a static method average() to class Exam, so that the code in main work correctly.
+ * You are making a program so that students are able to calculate their average of 3 exam scores.
+ * The given program takes the scores of 3 exams as input and declares the Exams class.
+ * Add a static method average() to class Exams, which will take the scores as parameters, and calculate and return the average score rounded to the nearest integer so that the code in main works correctly.
+ * 
+ * Sample Input
+ * 74
+ * 80
+ * 68
+ * 
+ * Sample Output
+ * 74
+ * 
+ * Recall Math.round() function to round the number with the floating point to the nearest integer.
+ * 
+ */
+function main() {
+    var exam1 = parseInt(readLine(), 10);
+    var exam2 = parseInt(readLine(), 10);
+    var exam3 = parseInt(readLine(), 10);
+
+    console.log(Exams.average(exam1, exam2, exam3));
+
+}
+class Exams {
+    //your code goes here
+    static average(exam1, exam2, exam3) {
+        const avg = (exam1 + exam2 + exam3) / 3;
+        return Math.round(avg);
+    }
+}
+
+class Dog {
+    constructor(name) {
+        this.name = name;
+    }
+    bark() {
+        console.log(this.name + ' barcs.');
+    }
+}
+let d = new Dog('Rex');
+d.bark();
+
+//Inheritance in ES6
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name + ' makes a noise.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name + ' barks.');
+    }
+}
+let dog = new Dog('Rex');
+dog.speak(); // Rex barks.
+//في الكود أعلاه ، صنف الكلب هو طفل من فئة الحيوان ، يرث خصائصه وطرقه.
+
+//إذا كان هناك مُنشئ موجود في الفئة الفرعية ، فيجب أولاً استدعاء super () قبل استخدام هذا. أيضًا ، تُستخدم الكلمة الأساسية الفائقة لاستدعاء طرق الوالدين.
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name + ' makes a noise.');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        super.speak(); // Super
+        console.log(this.name + ' barks.');
+    }
+}
+
+let dog = new Dog('Rex');
+dog.speak();
+// Rex makes a noise.
+// Rex barks.
+//في الكود أعلاه ، يتم استدعاء طريقة الكلام () الخاصة بالوالدين باستخدام الكلمة الرئيسية الفائقة.
+
+
+/** 
+ * Attack!
+ * Inherit Gunner and Sniper classes from Unit class for your real-time strategy game with two shooter types.
+ * In a real-time strategy video game there are 2 types of units: gunner and sniper.
+ * The program you are given declares a standard Unit class. It has an attack() method, which displays мessage "Attack!".
+ * You need to inherit Gunner and Sniper classes from the Unit class, and add attack() method to each so that the given function calls work correctly: each method should call the attack() method of parent class Unit, and then output to the console its own corresponding message:
+ * Gunner => "Using gun!"
+ * Sniper = "Using sniper rifle!"
+ * 
+ * For example, gunner.attack() should output
+ * Attack!
+ * Using gun!
+ * where "Attack!" is message form attack() method of parent class Unit, and "Using gun!" is its own message.
+ * 
+ * Use the super keyword to call the method of the parent class.
+ */
+
+class Unit {
+    attack() {
+        console.log("Attack!");
+    }
+}
+
+//inherit this class from Unit
+class Gunner extends Unit {
+
+    attack() {
+        //complete the function
+        super.attack();
+        console.log("Using gun!");
+    }
+}
+//inherit this class from Unit
+class Sniper extends Unit {
+    attack() {
+        //complete the function
+        super.attack();
+        console.log("Using sniper rifle!");
+    }
+}
+
+let gunner = new Gunner();
+let sniper = new Sniper();
+
+//calls
+gunner.attack();
+sniper.attack();
