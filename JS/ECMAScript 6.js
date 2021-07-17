@@ -746,3 +746,164 @@ let sniper = new Sniper();
 //calls
 gunner.attack();
 sniper.attack();
+
+//استخدام الـ Super لاستدعاء المنشئ
+class Human {
+    constructor(name) {
+        this.name = name;
+    }
+}
+class Student extends Human {
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+        console.log(
+            this.name +
+            `: ${this.age} of the year.`
+        );
+    }
+}
+let student = new Student('Bill', 23);
+
+
+//ES6 Map
+//https://t.me/c/1321293865/45846
+
+let map = new Map([['k1', 'v1'], ['k2', 'v2']]);
+
+console.log(map.size); // 2
+
+//example
+let map = new Map();
+map.set('k1', 'v1').set('k2', 'v2');
+
+console.log(map.get('k1')); // v1
+console.log(map.has('k2')); // true
+
+for (let kv of map.entries())
+    console.log(kv[0] + " : " + kv[1]);
+
+/** ES6 Map 
+ * Employee map
+ * Complete the program to output the list of employees in format shown in sample output.
+ * Five employees at a company are stored in Map in the program you are given. Their names are set as keys and their positions as values. The company is hiring one more employee. The program should take the name and the position as inputs and store them in the existing map.
+ * Complete the program to perform that operation and output to the console the list of employees in the format shown in the sample output.
+ * 
+ * Sample Input
+ * Bob
+ * Developer
+ * 
+ * Sample Output
+ * Richard : Developer
+ * Maria : SEO Specialist
+ * Tom : Product Manager
+ * David : Accountant
+ * Sophia : HR Manager
+ * Bob : Developer
+ * 
+ * The entries() method returns an Iterator of array[key, value] in the map for each element.
+ * Don't forget to put spaces before and after the colon (:) in the output.
+ */
+
+function main() {
+    var name = readLine();
+    var position = readLine();
+    let employees = new Map([
+        ["Richard", "Developer"],
+        ["Maria", "SEO Specialist"],
+        ["Tom", "Product Manager"],
+        ["David", "Accountant"],
+        ["Sophia", "HR Manager"]
+    ]);
+
+
+    //add the new pair to the map
+    employees.set(name, position);
+
+    for (var i of employees.entries()) {
+        //your code for the output
+        console.log(i[0] + " : " + i[1]);
+    }
+}
+
+//تمرين
+const map = new Map();
+map.set('one', 1);
+map.set('2', 'two');
+if (map.has('two')) {
+    console.log('two');
+} else {
+    console.log(map.get('one'));
+}
+
+//ES6 Set
+//A Set object can be used to hold unique values (no repetitions are allowed).
+//A value in a set can be anything (objects and primitive values).
+//The syntax new Set([iterable]) creates a Set object where iterable is an array or any other iterable object of values.
+//The size property returns the number of distinct values in a set.
+//https://t.me/CsharpAbdullahAlsalem/156
+
+let set = new Set([1, 2, 4, 2, 59, 9, 4, 9, 1]);
+
+console.log(set.size); // 5
+//______________________________________________
+let set = new Set();
+set.add(5).add(9).add(59).add(9);
+
+console.log(set.has(9));
+
+for (let v of set.values())
+    console.log(v);
+
+/** ES6 Set
+ * Distinct values of the set
+ * Write a code to output to the console the count of distinct values in the given set.
+ * You are making a program for a sports store warehouse.
+ * The warehouse currently has 7 types of sports equipment and plans to purchase more. The program you are given takes 3 new purchased item types as input.
+ * let products = new Set(["dumbbells", "barbell", "t-shirt", "swim short", "gloves", "training apparatus", "goggle"]); 
+ * Write a program to add the new items to the given set, then calculate and output to the console the count of item types in the warehouse.
+ * 
+ * Sample Input
+ * barbell
+ * gloves
+ * bandage
+ * 
+ * Sample Output
+ * 8
+ * 
+ * Explanation
+ * Before the purchase, we already had a "barbell" and "gloves", but did not have a "bandage". So +1 to our item types: 7+1 = 8.
+ * 
+ * Now is the right time to use size property.
+ */
+
+function main() {
+
+    let products = new Set([
+        "dumbbells",
+        "barbell",
+        "t-shirt",
+        "swim short",
+        "gloves",
+        "training apparatus",
+        "goggle"
+    ]);
+
+    var count = 0;
+    while (count < 3) {
+        var itemType = readLine();
+        //add the item to the set
+        products.add(itemType);
+        count++;
+    }
+
+    //calculate and output the count of item types
+    console.log(products.size);
+}
+
+//تمرين
+let objSet = new Set();
+objSet.add(1).add(2).add(3);
+for (let v of objSet.values()) console.log(v);
+
+//ES6 Promises
