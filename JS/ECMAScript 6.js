@@ -906,4 +906,227 @@ let objSet = new Set();
 objSet.add(1).add(2).add(3);
 for (let v of objSet.values()) console.log(v);
 
-//ES6 Promises
+//ES6 Promises - لم أفهم هذه الجملة على الإطلاق
+function asyncFunc(work) {
+    return new Promise(function (resolve, reject) {
+        if (work === "")
+            reject(Error("Nothing"));
+        setTimeout(function () {
+            resolve(work);
+        }, 1000);
+    });
+}
+
+asyncFunc("Work 1") // Task 1
+    .then(function (result) {
+        console.log(result);
+        return asyncFunc("Work 2"); // Task 2
+    }, function (error) {
+        console.log(error);
+    })
+    .then(function (result) {
+        console.log(result);
+    }, function (error) {
+        console.log(error);
+    });
+console.log("End");
+
+//javascript-es6-promises
+https://www.freecodecamp.org/news/javascript-es6-promises-for-beginners-resolve-reject-and-chaining-explained/
+getSomeResult = () => {
+    let result = confirm("Do you really want to leave this page?");
+    alert(
+        result
+            ? "Thanks for visiting"
+            : "Thanks for staying with us"
+    );
+    return result;
+};
+
+foo = () => {
+    return new Promise((resolve, reject) => {
+        let result = getSomeResult();
+        console.log(result);
+        result
+            ? resolve('Success')
+            : reject('Something went wrong')
+    });
+};
+
+/* Taste:
+"Then is the resolve defined in promise, and variable "result" is the one passed from the promise"
+ 
+catch is the reject:*/
+foo().then(result => {
+    console.log(result) //Success
+}).catch(result => {
+    console.log(result) //Something went wrong
+})
+
+//Iterators & Generators
+//First, we create an object, and use the Symbol.iterator and generator function to fill it with some values.
+//In the second line of the code, we use a * with the function keyword. It's called a generator function (or gen function).
+
+
+
+let myIterableObj = {
+    [Symbol.iterator]: function* () {
+        yield 1; yield 2; yield 3;
+    }
+};
+console.log([...myIterableObj]); // [ 1, 2, 3 ]
+
+
+function* idMaker() {
+    let index = 0;
+    while (index < 6)
+        yield index++;
+}
+var gen = idMaker();
+
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+// Try to add one more console.log, just like the above see what happens.
+
+
+//The example below will show a useful case of how we can use generator functions and Symbol.iterators together.
+const arr = ['0', '1', '4', 'a', '9', 'c', '16'];
+const my_obj = {
+    [Symbol.iterator]: function* () {
+        for (let index of arr) {
+            yield `${index}`;
+        }
+    }
+};
+
+const all = [...my_obj] /* Here you can replace the '[...my_obj]' with 'arr'. */
+    .map(i => parseInt(i, 10))
+    .map(Math.sqrt)
+    .filter((i) => i < 5) /* try changing the value of 5 to 4 see what happens.*/
+    .reduce((i, d) => i + d); /* comment this line while you are changing the value of the line above */
+
+console.log(all);
+
+/* Modules
+// lib/math.js
+export ​let sum = (x, y) => { return x + y; }
+
+export ​let pi = 3.14
+
+
+// app.j
+
+import * ​as math from "lib/mat"
+console.log(`2p = + ${math.sum(math.pi, math.pi);*/
+
+/**
+ * ES6 supports modules officially, however, some browsers are not supporting modules natively yet. So, we should use bundlers (builders) such as Webpack or Browserify to run our code.
+ */
+export const hit = (x, y, z) => {
+    return x * y + z / 2;
+}
+export const degree = 50;
+import * as calc from "util/calc";
+
+calc.hit(1, 2, calc.degree);
+
+//Built-in Methods
+
+//Array Element Finding
+//old
+[4, 5, 1, 8, 2, 0].filter(function (x) {
+    return x > 3;
+})[0];
+
+//New - The new syntax is cleaner and more robust
+c = [4, 5, 1, 8, 2, 0].find(x => x > 5);
+console.log(c);
+
+//For Index
+c = [4, 5, 1, 8, 2, 0].findIndex(x => x > 4);
+console.log(c);
+
+//Repeating Strings
+//Old
+console.log(Array(4 + 1).join("foo"));
+//New - With the new syntax, it becomes:
+console.log("foo".repeat(3));
+
+//Searching Strings
+//Old
+console.log("SoloLearn".indexOf("Solo") === 0); // true
+console.log("SoloLearn".indexOf("Solo") === (4 - "Solo".length)); // true
+console.log("SoloLearn".indexOf("loLe") !== -1); // true
+console.log("SoloLearn".indexOf("olo", 1) !== -1); // true
+console.log("SoloLearn".indexOf("olo", 2) !== -1); // false
+//New - ES6 has replaced this with a version that has cleaner and more simplified syntax
+console.log("SoloLearn".startsWith("Solo", 0)); // true
+console.log("SoloLearn".endsWith("Solo", 4)); // true
+console.log("SoloLearn".includes("loLe")); // true
+console.log("SoloLearn".includes("olo", 1)); // true
+console.log("SoloLearn".includes("olo", 2)); // false
+
+//تمرين
+const arr = ["3", "5", "8"];
+console.log(
+    arr.find(x => x == 8).repeat(2)
+);
+
+//Quiz
+
+//1
+const num = 5;
+
+const calc = (x, y, z = num) => {
+
+    return x + y + z;
+
+}
+
+
+//2
+const arr1 = [1, 2, 3];
+
+const arr2 = [5, 6, 7, 8];
+
+let arr3 = [...arr1, 4, ...arr2];
+
+//3
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [...arr1, 6];
+const func = (...rest) => {
+    console.log(rest.length);
+}
+func(...arr1);
+func(...arr2);
+
+//4
+const square = num => num * num;
+console.log(square(6) + 6);
+
+//5
+//Fill in the blanks to copy the user object to the newUser object by destructuring the name and age properties. Pass the value 9999 for the id property.
+const user = { name: 'David', age: 28, id: 1234 };
+let newUser = Object.assign({}, { name, age } = user, { id: 9999 });
+console.log(newUser);
+
+//6
+/**Fill in the blanks to get the following output:
+zero = 0
+one = 1
+ * 
+ */
+let myMap = new Map();
+myMap.set('zero', 0);
+myMap.set('one', 1);
+
+for (let [key, value] of myMap) {
+    console.log(`${key} = ${value}`);
+}
+
+
+
